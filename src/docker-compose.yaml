@@ -1,0 +1,22 @@
+version: "1"
+services:
+    frontend:
+        container_name: awesome_web
+        build:
+            context: ./web
+            dockerfile: Dockerfile
+        image: web-image
+        ports:
+            - "3000:3000"
+        volumes:
+            - ./client:/usr/src/app
+    backend:
+        container_name: awesome_server
+        build:
+            context: ./server
+            dockerfile: Dockerfile
+        image: server-image
+        ports:
+            - "8080:8080"
+        volumes:
+            - ./server:/usr/src/app
